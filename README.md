@@ -1,8 +1,8 @@
-# 🎌 Anime Recommender Web App
+Anime Recommender Web App
 
 A Python + Flask based Anime Recommendation System that suggests similar anime using content-based filtering.
 
-## 🚀 Features
+ Features
 - Recommend anime based on genre similarity
 - Uses TF-IDF + Cosine Similarity
 - Large dataset (thousands of anime)
@@ -10,7 +10,7 @@ A Python + Flask based Anime Recommendation System that suggests similar anime u
 - Poster images via Jikan API
 - Filters: title, genre, year, rating
 
-## 🛠 Tech Stack
+ Tech Stack
 - Python
 - Flask
 - Pandas
@@ -18,11 +18,12 @@ A Python + Flask based Anime Recommendation System that suggests similar anime u
 - HTML/CSS
 - Jikan API
 
-## 🧠 Method Used
+ Method Used
 Content-Based Filtering using TF-IDF vectorization and cosine similarity on anime genres.
 
-## ▶️ How to Run
+ How to Run
 
 ```bash
 pip install -r requirements.txt
 python app.py
+
