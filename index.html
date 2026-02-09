@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Anime Recommender 🌸</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #f7f0f5;
+            padding: 30px;
+        }
+        h1 {
+            text-align: center;
+            color: #8e44ad;
+        }
+        form {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 800px;
+            margin: auto;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        label {
+            font-weight: bold;
+        }
+        input, select, button {
+            padding: 10px;
+            width: 100%;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #9b59b6;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #8e44ad;
+        }
+        .results {
+            width: 90%;
+            max-width: 800px;
+            margin: 30px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .anime-card {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .anime-card:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Anime Recommender 🌸</h1>
+
+<form method="POST">
+    <label for="title">🎬 Anime Title:</label>
+    <input type="text" id="title" name="title" placeholder="e.g. One Piece">
+
+    <label for="genre">🎭 Genre:</label>
+    <select id="genre" name="genre">
+        <option value="">Any</option>
+        {% for g in genres %}
+            <option value="{{ g }}">{{ g }}</option>
+        {% endfor %}
+    </select>
+
+    <label for="year">📅 Year:</label>
+    <select id="year" name="year">
+        <option value="">Any</option>
+        {% for y in years %}
+            <option value="{{ y }}">{{ y }}</option>
+        {% endfor %}
+    </select>
+
+    <label for="rating">⭐ Minimum Rating:</label>
+    <input type="range" id="rating" name="rating" min="0" max="10" step="0.1" value="7" oninput="ratingOutput.value = rating.value">
+    <output name="ratingOutput" id="ratingOutput">7</output>
+
+    <button type="submit">🔍 Recommend</button>
+</form>
+
+{% if results %}
+<div class="results">
+    <h2>🧠 Recommendations:</h2>
+    {% for anime in results %}
+        <div class="anime-card">
+            <strong>{{ anime.title }}</strong> ({{ anime.year }})<br>
+            Genre: {{ anime.genre }}<br>
+            Rating: ⭐ {{ anime.rating }}
+        </div>
+    {% endfor %}
+</div>
+{% endif %}
+
+</body>
+</html>
